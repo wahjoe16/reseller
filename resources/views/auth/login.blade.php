@@ -16,10 +16,10 @@
                             <div class="card-body">
                                 <form role="form" action="{{ route('login') }}" method="post">@csrf
                                     <div class="mb-3">
-                                        <input id="email" class="form-control form-control-lg block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                                        <input id="email" class="form-control form-control-lg block mt-1 w-full" type="email" name="email" :value="old('email')" placeholder="Your Email" required autofocus autocomplete="username" />
                                     </div>
                                     <div class="mb-3">
-                                        <input id="password" class="form-control form-control-lg block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                                        <input id="password" class="form-control form-control-lg block mt-1 w-full" type="password" name="password" placeholder="Your Password" required autocomplete="current-password" />
                                     </div>
                                     <div class="form-check form-switch">
                                         <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">

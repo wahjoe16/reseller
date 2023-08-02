@@ -33,6 +33,9 @@
     <link href="{{ asset('/argon/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('/argon/assets/css/argon-dashboard.css?v=2.0.4') }}" rel="stylesheet" />
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('/argon/assets/DataTables/dataTables.min.css') }}">
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -56,12 +59,16 @@
     @includeIf('layouts.admin.plugin')
     <!-- end plugin -->
 
+    <!-- Jquery -->
+    <script src="{{ asset('/argon/assets/js/jquery-3-7-0.js') }}"></script>
     <!--   Core JS Files   -->
     <script src="{{ asset('/argon/assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('/argon/assets/js/core/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/argon/assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('/argon/assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
     <script src="{{ asset('/argon/assets/js/plugins/chartjs.min.js') }}"></script>
+    <!-- DataTables -->
+    <script src="{{ asset('/argon/assets/DataTables/dataTables.min.js') }}"></script>
     <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
 
@@ -158,6 +165,12 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('/argon/assets/js/argon-dashboard.min.js?v=2.0.4') }}"></script>
+
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+
+
+    <!-- bottom scripts -->
+    @stack('bottom_scripts')
 </body>
 
 </html>

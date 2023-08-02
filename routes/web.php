@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::group(['middleware' => 'web'], function () {
+    Route::resource('categories', CategoriesController::class)->except('destroy');
+    Route::get('categories/{id}/delete', [CategoriesController::class, 'destroy'])->name('delete.category');
+    Route::get('data/categories', [CategoriesController::class, 'data'])->name('categories.data');
+});
+
+require __DIR__ . '/auth.php';

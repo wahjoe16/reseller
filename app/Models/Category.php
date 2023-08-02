@@ -24,4 +24,19 @@ class Category extends Model
     {
         return $this->belongsToMany(Product::class);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($model) {
+            // remove relasi ke product
+            $model->products()->detach();
+
+            foreach ($model->childs as $child) {
+                $child->parent_id = '';
+                $child->save();
+            }
+        });
+    }
 }
