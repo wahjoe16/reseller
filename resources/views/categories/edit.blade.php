@@ -28,9 +28,8 @@
                                     <label for="example-text-input" class="form-control-label">Parent Category</label>
                                     <select class="form-control" name="parent_id">
                                         <option value="">Select</option>
-                                        <option value="{{ $data->id }}" selected>{{ $data->parent->title }}</option>
                                         @foreach ($categories as $c)
-                                        <option value="{{ $c->id }}">
+                                        <option value="{{ $c->id }}" @if(!empty($data['parent_id']==$c['id'])) selected="selected" @endif>
                                             {{ $c->title  }}
                                         </option>
                                         @endforeach

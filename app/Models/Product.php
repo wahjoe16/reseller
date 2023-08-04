@@ -14,4 +14,14 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($model) {
+            // remove relation to category
+            $model->categories()->detach();
+        });
+    }
 }
